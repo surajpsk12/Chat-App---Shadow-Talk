@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -29,6 +30,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    buildFeatures{
+        dataBinding = true
+        
+    }
 }
 
 dependencies {
@@ -40,4 +45,16 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+
+    // Import the Firebase BoM
+    implementation(platform("com.google.firebase:firebase-bom:34.0.0"))
+
+
+    implementation("com.google.firebase:firebase-analytics")
+
+    implementation("com.google.firebase:firebase-auth")
+
+    implementation("com.google.firebase:firebase-database")
+
 }
