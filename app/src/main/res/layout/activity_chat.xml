@@ -14,68 +14,194 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/main"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#121212"
+        android:animateLayoutChanges="true">
 
-        <TextView
-            android:textSize="24sp"
-            android:textColor="@color/white"
+        <!-- Header with neon glow effect -->
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:text="Messages"
-            android:gravity="center"
-            android:background="#47249E"/>
+            android:layout_height="56dp"
+            android:background="@drawable/header_background_neon"
+            android:elevation="8dp"
+            android:animationDuration="300">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Messages"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:letterSpacing="0.1"
+                android:fontFamily="sans-serif-medium"/>
+
+            <!-- Animated neon line at bottom -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/neon_gradient_line_anim"
+                android:alpha="0.8"/>
+
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#121212">
 
+            <!-- RecyclerView with fade animation -->
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/recyclerView"
-                android:layout_above="@+id/layout_input">
+                android:layout_above="@+id/layout_input"
+                android:layout_marginTop="8dp"
+                android:clipToPadding="false"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
             </androidx.recyclerview.widget.RecyclerView>
 
+            <!-- Message input layout with modern design -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:id="@+id/layout_input"
                 android:layout_alignParentBottom="true"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@drawable/input_area_background_neon"
+                android:padding="12dp"
+                android:elevation="12dp"
+                android:animateLayoutChanges="true">
 
-                <EditText
+                <!-- Modern EditText with neon border -->
+                <RelativeLayout
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="48dp"
                     android:layout_weight="1"
-                    android:hint="Type Here"
-                    android:id="@+id/edittext_chat_message"
-                    android:layout_marginLeft="5dp"/>
+                    android:layout_marginEnd="12dp">
 
-                <Button
+                    <EditText
+                        android:id="@+id/edittext_chat_message"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Type your message..."
+                        android:textColor="#FFFFFF"
+                        android:textColorHint="#AAAAAA"
+                        android:textSize="16sp"
+                        android:background="@drawable/edittext_background_neon"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:fontFamily="sans-serif"
+                        android:imeOptions="actionSend"
+                        android:inputType="textCapSentences|textMultiLine"
+                        android:maxLines="3"/>
 
-                    android:id="@+id/sendBTN"
+                    <!-- Subtle glow effect overlay -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/edittext_glow_overlay_neon"
+                        android:alpha="0.3"
+                        android:clickable="false"
+                        android:focusable="false"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:text="Send"/>
+                    android:layout_height="48dp">
 
+                    <Button
+                        android:id="@+id/sendBTN"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Send"
+                        android:textColor="#121212"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:background="@drawable/send_button_background_neon"
+                        android:fontFamily="sans-serif-medium"
+                        android:stateListAnimator="@animator/button_press_anim_neon"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:maxLines="1"
+                        android:ellipsize="end" />
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/button_glow_effect_neon"
+                        android:alpha="0.6"
+                        android:clickable="false"
+                        android:focusable="false"/>
+                </RelativeLayout>
 
             </LinearLayout>
 
+            <!-- Typing indicator (hidden by default) -->
+            <LinearLayout
+                android:id="@+id/typing_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/layout_input"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="16dp"
+                android:orientation="horizontal"
+                android:background="@drawable/typing_indicator_background_neon"
+                android:padding="12dp"
+                android:visibility="gone"
+                android:alpha="0.9">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Someone is typing"
+                    android:textColor="#AAAAAA"
+                    android:textSize="12sp"
+                    android:fontFamily="sans-serif"/>
 
+                <!-- Animated dots -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="8dp">
 
+                    <View
+                        android:layout_width="4dp"
+                        android:layout_height="4dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/typing_dot_neon"
+                        android:animation="@anim/typing_dot_1_anim"/>
+
+                    <View
+                        android:layout_width="4dp"
+                        android:layout_height="4dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/typing_dot_neon"
+                        android:animation="@anim/typing_dot_2_anim"/>
+
+                    <View
+                        android:layout_width="4dp"
+                        android:layout_height="4dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/typing_dot_neon"
+                        android:animation="@anim/typing_dot_3_anim"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </RelativeLayout>
 
-
-
-
-
     </LinearLayout>
-
-
-
-
 
 </layout>

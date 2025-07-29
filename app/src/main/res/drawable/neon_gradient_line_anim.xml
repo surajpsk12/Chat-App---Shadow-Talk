@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+
+    <item android:duration="1000">
+        <shape>
+            <gradient
+                android:startColor="#00FFD1"
+                android:centerColor="#8B5CF6"
+                android:endColor="#00FFD1"
+                android:angle="0"/>
+        </shape>
+    </item>
+
+    <item android:duration="1000">
+        <shape>
+            <gradient
+                android:startColor="#8B5CF6"
+                android:centerColor="#00FFD1"
+                android:endColor="#8B5CF6"
+                android:angle="0"/>
+        </shape>
+    </item>
+
+</animation-list>
