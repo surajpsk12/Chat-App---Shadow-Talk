@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="NeonTextTitle">
+        <item name="android:textColor">@color/neon_white</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.1</item>
+    </style>
+
+    <style name="NeonTextSubtitle">
+        <item name="android:textColor">@color/neon_gray</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:letterSpacing">0.05</item>
+    </style>
+
+    <style name="NeonCard">
+        <item name="android:background">@drawable/neon_card_bg</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:layout_margin">8dp</item>
+    </style>
+
+    <style name="NeonButton">
+        <item name="android:background">@drawable/neon_button_bg</item>
+        <item name="android:textColor">@color/neon_bg_dark</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:stateListAnimator">@animator/neon_button_animator</item>
+    </style>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Neon Theme Colors -->
+    <color name="neon_bg_dark">#121212</color>
+    <color name="neon_bg_secondary">#1E1E1E</color>
+    <color name="neon_bg_tertiary">#272727</color>
+    <color name="neon_cyan">#00FFD1</color>
+    <color name="neon_purple">#8B5CF6</color>
+    <color name="neon_white">#FFFFFF</color>
+    <color name="neon_gray">#AAAAAA</color>
+    <color name="neon_cyan_pressed">#00E6BC</color>
+    <color name="neon_purple_pressed">#7C3AED</color>
+</resources>
