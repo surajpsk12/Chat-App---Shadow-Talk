@@ -1,6 +1,13 @@
 package com.surajvanshsv.chatapp.views;
 
+import android.app.Dialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +36,10 @@ public class  GroupsActvity extends AppCompatActivity {
     private GroupAdapter groupAdapter;
     private ActivityGroupsActvityBinding binding;
     private  MyViewModel myViewModel;
+    private Dialog chatGroupDialog;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,10 +73,44 @@ public class  GroupsActvity extends AppCompatActivity {
             }
         });
 
+        binding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog();
+            }
+        });
+
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    public void showDialog(){
+        chatGroupDialog = new Dialog(this);
+        chatGroupDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        View view = LayoutInflater.from(this).inflate(R.layout.dialog_layout,null);
+        chatGroupDialog.setContentView(view);
+        chatGroupDialog.show();
+        Button submit = view.findViewById(R.id.submit_btn);
+        EditText edt = view.findViewById(R.id.chat_group_edt);
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String groupName = edt.getText().toString();
+                Toast.makeText(GroupsActvity.this,"Your chat group "+groupName,Toast.LENGTH_SHORT).show();
+
+                myViewModel.createNewGroup(groupName);
+                chatGroupDialog.dismiss();
+            }
+        });
+
+
+
+
     }
 }

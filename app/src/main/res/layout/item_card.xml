@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView"
                 android:text="@{chatGroup.groupName}"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="38sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

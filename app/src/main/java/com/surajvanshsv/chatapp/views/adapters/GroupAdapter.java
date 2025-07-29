@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.surajvanshsv.chatapp.R;
 import com.surajvanshsv.chatapp.databinding.ItemCardBinding;
 import com.surajvanshsv.chatapp.model.ChatGroup;
+import com.surajvanshsv.chatapp.views.ChatActivity;
 //import com.surajvanshsv.chatapp.views.ChatActivity;
 
 import java.util.ArrayList;
@@ -70,10 +71,10 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupViewHol
                     int position = getAdapterPosition();
 
                     ChatGroup clickedChatGroup = groupArrayList.get(position);
-//
-//                    Intent i = new Intent(view.getContext(), ChatActivity.class);
-//                    i.putExtra("GROUP_NAME", clickedChatGroup.getGroupName());
-//                    view.getContext().startActivity(i);
+
+                    Intent i = new Intent(view.getContext(), ChatActivity.class);
+                    i.putExtra("GROUP_NAME", clickedChatGroup.getGroupName());
+                    view.getContext().startActivity(i);
 
 
 

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vModel"
+            type="com.surajvanshsv.chatapp.viewmodel.MyViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/main"
+        android:orientation="vertical">
+
+        <TextView
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="Messages"
+            android:gravity="center"
+            android:background="#47249E"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/recyclerView"
+                android:layout_above="@+id/layout_input">
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/layout_input"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="Type Here"
+                    android:id="@+id/edittext_chat_message"
+                    android:layout_marginLeft="5dp"/>
+
+                <Button
+
+                    android:id="@+id/sendBTN"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:text="Send"/>
+
+
+
+            </LinearLayout>
+
+
+
+
+
+        </RelativeLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+</layout>
