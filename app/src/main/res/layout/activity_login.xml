@@ -6,45 +6,281 @@
         <variable
             name="vModel"
             type="com.surajvanshsv.chatapp.viewmodel.MyViewModel" />
-
     </data>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/main"
-        android:background="@drawable/wallpaper"
+        android:background="#121212"
         tools:context=".views.LoginActivity">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="104dp"
-            android:gravity="center"
-            android:text="Welcome to our Chat App \nFeel Free to Meet new Friends!"
-            android:textColor="@color/white"
-            android:textSize="28sp"
+        <!-- Animated background elements -->
+        <View
+            android:id="@+id/bg_glow_top"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="-150dp"
+            android:layout_marginEnd="-150dp"
+            android:alpha="0.08"
+            android:background="@drawable/neon_circle_gradient"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:onClick="@{() -> vModel.signUpAnonymousUser()}"
-            android:id="@+id/button_auth"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="16dp"
-            android:padding="10dp"
-            android:text="Anonymous Login"
+        <View
+            android:id="@+id/bg_glow_bottom"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginStart="-125dp"
+            android:layout_marginBottom="-125dp"
+            android:alpha="0.06"
+            android:background="@drawable/neon_circle_gradient_purple"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <!-- App branding section -->
+        <LinearLayout
+            android:id="@+id/branding_section"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="32dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- App logo/icon -->
+            <ImageView
+                android:id="@+id/login_logo"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/neon_logo_bg_small"
+                android:padding="16dp"
+                android:src="@drawable/ic_chat_logo"
+                android:scaleType="centerInside" />
+
+            <!-- Welcome text -->
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Welcome to Chat App"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.05"
+                android:lineSpacingExtra="4dp" />
+
+            <!-- Subtitle -->
+            <TextView
+                android:id="@+id/subtitle_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="Connect • Chat • Stay Anonymous"
+                android:textColor="#AAAAAA"
+                android:textSize="16sp"
+                android:letterSpacing="0.1" />
+
+            <!-- Neon accent line -->
+            <View
+                android:id="@+id/accent_line"
+                android:layout_width="120dp"
+                android:layout_height="3dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/neon_line_gradient" />
+
+        </LinearLayout>
+
+        <!-- Login content section -->
+        <LinearLayout
+            android:id="@+id/login_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/login_button_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/branding_section">
+
+            <!-- Feature highlights -->
+            <LinearLayout
+                android:id="@+id/features_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginBottom="32dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+
+                    <View
+                        android:layout_width="6dp"
+                        android:layout_height="6dp"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/feature_dot" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No registration required"
+                        android:textColor="#AAAAAA"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+
+                    <View
+                        android:layout_width="6dp"
+                        android:layout_height="6dp"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/feature_dot" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Complete privacy protection"
+                        android:textColor="#AAAAAA"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <View
+                        android:layout_width="6dp"
+                        android:layout_height="6dp"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/feature_dot" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Meet new friends safely"
+                        android:textColor="#AAAAAA"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Login button section -->
+        <LinearLayout
+            android:id="@+id/login_button_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="60dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <!-- Anonymous login button -->
+            <Button
+                android:id="@+id/button_auth"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/neon_button_bg"
+                android:elevation="8dp"
+                android:onClick="@{() -> vModel.signUpAnonymousUser()}"
+                android:text="Anonymous Login"
+                android:textAllCaps="false"
+                android:textColor="#121212"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.05" />
+
+            <!-- Privacy notice -->
+            <TextView
+                android:id="@+id/privacy_notice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Your identity remains completely anonymous"
+                android:textColor="#AAAAAA"
+                android:textSize="12sp"
+                android:alpha="0.7" />
+
+        </LinearLayout>
+
+        <!-- Loading indicator (initially hidden) -->
+        <LinearLayout
+            android:id="@+id/loading_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <View
+                    android:id="@+id/loading_dot1"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/loading_dot" />
+
+                <View
+                    android:id="@+id/loading_dot2"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/loading_dot" />
+
+                <View
+                    android:id="@+id/loading_dot3"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:background="@drawable/loading_dot" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Connecting..."
+                android:textColor="#AAAAAA"
+                android:textSize="14sp" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
