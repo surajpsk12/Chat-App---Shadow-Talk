@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
@@ -236,6 +237,11 @@ public class GroupsActvity extends AppCompatActivity {
         view.setAlpha(0f);
 
         chatGroupDialog.show();
+        // Force full width in all orientations
+        Window window = chatGroupDialog.getWindow();
+        if (window != null) {
+            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        }
 
         view.animate()
                 .scaleX(1f)
@@ -251,6 +257,14 @@ public class GroupsActvity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // 🔽 Auto-dismiss keyboard on submit
+                edt.clearFocus();
+                android.view.inputmethod.InputMethodManager imm = (android.view.inputmethod.InputMethodManager)
+                        getSystemService(INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.hideSoftInputFromWindow(edt.getWindowToken(), 0);
+                }
+
                 String groupName = edt.getText().toString().trim();
 
                 if (!groupName.isEmpty()) {
@@ -273,6 +287,7 @@ public class GroupsActvity extends AppCompatActivity {
             }
         });
     }
+
 
     private void animateButtonPress(Button button) {
         button.animate()

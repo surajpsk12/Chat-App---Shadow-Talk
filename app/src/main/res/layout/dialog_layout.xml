@@ -5,7 +5,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#CC121212">
 
         <TextView
             android:id="@+id/textView2"
@@ -15,6 +16,8 @@
             android:gravity="center"
             android:text="Please enter the name of chat group you want to create"
             android:textSize="24sp"
+            android:textColor="#00FFD1"
+            android:fontFamily="sans-serif-medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,6 +28,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:hint="Chat Group Name"
+            android:background="@drawable/edittext_neon_dark"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#AAAAAA"
+            android:padding="16dp"
+            android:elevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +44,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="Create Chat Group"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            android:fontFamily="sans-serif-medium"
+            android:background="@drawable/button_neon_cyan"
+            android:elevation="8dp"
+            android:stateListAnimator="@animator/button_press_anim"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chat_group_edt" />
