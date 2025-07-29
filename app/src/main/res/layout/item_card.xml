@@ -1,56 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
         <variable
             name="chatGroup"
             type="com.surajvanshsv.chatapp.model.ChatGroup" />
-
     </data>
 
-
     <androidx.cardview.widget.CardView
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        android:layout_margin="16dp">
+        app:cardCornerRadius="16dp"
+        android:layout_margin="12dp"
+        app:cardElevation="8dp"
+        android:background="@drawable/group_card_background_neon"
+        app:cardBackgroundColor="@android:color/transparent"
+        android:foreground="@drawable/group_card_ripple_neon"
+        android:clickable="true"
+        android:focusable="true"
+        android:stateListAnimator="@animator/group_card_press_anim_neon">
 
+        <!-- Neon glow overlay for the entire card -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/group_card_glow_overlay_neon"
+            android:alpha="0.6"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="16dp"
-            app:layout_constraintEnd_toStartOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            android:background="@drawable/group_card_inner_background_neon"
+            android:padding="16dp"
+            android:animateLayoutChanges="true">
 
-
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:id="@+id/imageView"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
-                android:src="@drawable/groupicon"
+            <!-- Modern Avatar Container with neon border -->
+            <RelativeLayout
+                android:id="@+id/avatar_container"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent">
 
+                <!-- Animated neon ring around avatar -->
+                <View
+                    android:layout_width="88dp"
+                    android:layout_height="88dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/avatar_ring_anim_neon"
+                    android:alpha="0.8"/>
 
-            <TextView
-                android:layout_width="wrap_content"
+                <!-- Avatar background with gradient -->
+                <View
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/avatar_background_neon"/>
+
+                <!-- Group Icon -->
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:id="@+id/imageView"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/group_icon_neon"
+                    android:scaleType="centerInside"
+                    android:alpha="0.9"
+                    app:tint="#00FFD1" />
+
+                <!-- Subtle pulse animation overlay -->
+                <View
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/avatar_pulse_overlay_neon"
+                    android:animation="@anim/avatar_pulse_anim_neon"/>
+
+            </RelativeLayout>
+
+            <!-- Group Name with modern typography -->
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView"
-                android:text="@{chatGroup.groupName}"
-                android:textColor="@color/white"
-                android:textSize="38sp"
+                android:orientation="vertical"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/status_indicator"
+                app:layout_constraintStart_toEndOf="@+id/avatar_container"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView"
+                    android:text="@{chatGroup.groupName}"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.02"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:shadowColor="#00FFD1"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    android:shadowRadius="4"/>
+
+                <!-- Subtitle with member count or status -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Active Group"
+                    android:textColor="#AAAAAA"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_marginTop="4dp"
+                    android:alpha="0.9"/>
+
+            </LinearLayout>
+
+            <!-- Status Indicator (online/offline) -->
+            <RelativeLayout
+                android:id="@+id/status_indicator"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent">
+
+                <!-- Animated status dot -->
+                <View
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/status_dot_online_neon"/>
+
+                <!-- Pulsing ring around status -->
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/status_ring_pulse_neon"
+                    android:animation="@anim/status_pulse_anim_neon"/>
+
+            </RelativeLayout>
+
+            <!-- Subtle arrow indicator -->
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/arrow_right_neon"
+                android:alpha="0.7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="#8B5CF6" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Hover/Touch effect overlay -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/group_card_touch_overlay_neon"
+            android:alpha="0"
+            android:clickable="false"
+            android:focusable="false"/>
 
     </androidx.cardview.widget.CardView>
 
