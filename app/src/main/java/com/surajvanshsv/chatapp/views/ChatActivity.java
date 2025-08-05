@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,7 +49,7 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+        //EdgeToEdge.enable(this);
         setContentView(R.layout.activity_chat);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_chat);
@@ -60,6 +61,19 @@ public class ChatActivity extends AppCompatActivity {
         setupMessageObserver();
         setupSendButton();
         setupEditTextAnimations();
+        binding.edittextChatMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.edittextChatMessage.requestFocus();
+                binding.edittextChatMessage.postDelayed(() -> {
+                    binding.edittextChatMessage.requestFocus();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    if (imm != null) {
+                        imm.showSoftInput(binding.edittextChatMessage, InputMethodManager.SHOW_IMPLICIT);
+                    }
+                }, 100);
+            }
+        });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

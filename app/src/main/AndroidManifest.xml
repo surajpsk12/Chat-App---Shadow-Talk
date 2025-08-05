@@ -24,7 +24,8 @@
         </activity>
         <activity
             android:name=".views.ChatActivity"
-            android:exported="false" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".views.GroupsActvity"
             android:exported="false" />
