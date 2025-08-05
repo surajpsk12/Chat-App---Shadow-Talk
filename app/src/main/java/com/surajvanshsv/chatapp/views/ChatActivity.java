@@ -274,6 +274,7 @@ public class ChatActivity extends AppCompatActivity {
         scaleY.start();
     }
 
+
     private void handleTypingIndicator(boolean typing) {
         if (typing && !isTyping) {
             // Start typing indicator after a short delay
