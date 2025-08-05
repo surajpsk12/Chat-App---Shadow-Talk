@@ -176,7 +176,7 @@ public class ChatActivity extends AppCompatActivity {
                 animateSendButtonVisibility(!s.toString().trim().isEmpty());
 
                 // Simulate typing indicator (you can connect this to real typing events)
-                handleTypingIndicator(s.length() > 0);
+               // handleTypingIndicator(s.length() > 0);
             }
 
             @Override
